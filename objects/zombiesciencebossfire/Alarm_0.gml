@@ -1,0 +1,36 @@
+/// @description Insert description here
+// You can write your code in this editor
+alarm[0]=60
+if(alarm[1]<=0)
+{
+	if(distance_to_object(player)>256)
+	{
+		vsp=-15
+		y-=grav
+		repeat(5)
+		{
+			inst=instance_create_depth(x,y,depth,bulletbad)
+			inst.direction=irandom(360)
+		}
+		alarm[0]=60
+	}
+	else
+	{
+		inst=instance_create_depth(x,y,depth,bulletbad)
+		inst.direction=point_direction(x,y,player.x,player.y)
+		inst=instance_create_depth(x,y,depth,bulletbad)
+		inst.direction=point_direction(x,y,player.x,player.y)+45
+		inst=instance_create_depth(x,y,depth,bulletbad)
+		inst.direction=point_direction(x,y,player.x,player.y)-45
+		alarm[0]=7
+	}
+	if(irandom(9)!=2)
+	{
+		alarm[1]=120
+	}
+	else
+	{
+		instance_create_depth(x,y,depth,zombieday)
+		alarm[0]=120
+	}
+}

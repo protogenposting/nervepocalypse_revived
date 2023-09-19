@@ -1,0 +1,29 @@
+/// @description Insert description here
+// You can write your code in this editor
+if(hp<=0)
+{
+	x=0
+	y=-10000
+	draw_sprite(deadboiiiii,0,0,0)
+	draw_set_color(c_green)
+	draw_set_font(Font2)
+	draw_text(847,519,string(scorey))
+	draw_text(830,596,string(menuthing.hiscore))
+	draw_set_font(Font1)
+	if(keyboard_check_pressed(vk_anykey)&&i[0]<=0||gamepad_button_check_pressed(0,gp_face1)&&i[0]<=0)
+	{
+		with(menuthing)
+		{
+			save_level()
+		}
+		with(all)
+		{
+			if(persistent==true)
+			{
+				instance_destroy()
+			}
+		}
+		audio_stop_all()
+		room_goto(menu)
+	}
+}

@@ -1,0 +1,546 @@
+/// @description Insert description here
+// You can write your code in this editor
+	var bg = layer_get_id("Background")
+	if(gay)
+	{
+		layer_background_sprite(bg,gaymode)
+	}
+	else
+	{
+		layer_background_sprite(bg,ungaymode)
+	}
+if(gamepad_button_check_pressed(0,gp_start))
+{
+	if(room!=menu)
+	{
+		paused=!paused
+		if(!paused)
+		{
+			instance_activate_all()
+		}
+		else
+		{
+			instance_deactivate_all(true)
+		}
+	}
+}
+draw_set_color(c_green)
+draw_set_font(Font1)
+audio_master_gain(vol)
+if(array_length(inputs)>5)
+{
+	show_debug_message(inputs)
+	show_debug_message(codey[0])
+	inputs=array_create(0)
+}
+if(room==menu)
+{
+	if(gay)
+	{
+		draw_sprite_ext(skins[skin],0,250,500,5,5,15,c_white,1)
+		draw_sprite_ext(gun1,0,250,500,5,5,5,c_white,1)
+	}
+	draw_sprite(botsvsboblogo2,0,room_width/2,menupos[0])
+	draw_sprite(botsvsboblogo1,0,room_width/2,menupos[1])
+	if(botsvsbob)
+	{
+		if(menupos[0]>room_height/2&&menupos[0]!=room_height/2)
+		{
+			menupos[0]=room_height/2
+			menupos[1]=room_height/2
+			audio_stop_all()
+			audio_play_sound(doorcrash,1000,false)
+			audio_play_sound(bvbtitle,1000,true)
+		}
+		else if(menupos[0]!=room_height/2)
+		{
+			menupos[0]+=15
+			menupos[1]-=15
+		}
+		array_delete(button,2,4)
+		button[0]={
+			name:"INSERT BOT LIMB",
+			func: function(){
+				audio_stop_all()
+				room_goto(secret)
+				menuthing.botsvsbob=false
+			}
+		}
+		button[1]={
+			name:"back to main menu",
+			func: function(){
+				menuthing.botsvsbob=false
+			}
+		}
+	}
+	else
+	{
+		if(menupos[0]<0&&menupos[0]!=0)
+		{
+			menupos[0]=0
+			menupos[1]=room_height
+			audio_stop_all()
+			audio_play_sound(menuthemes[musictheme],1000,true)
+			button[0]={
+				name: global.translation[1][global.languageselected],
+				func: function(){
+					room_goto(Room1)
+				}
+			}
+			button[1]={
+				name:global.translation[2][global.languageselected]+": "+menuthing.difficulties[menuthing.difficulty],
+				func: function(){
+					menuthing.difficulty+=1
+					if(menuthing.difficulty>=array_length(menuthing.difficulties))
+					{
+						menuthing.difficulty=0
+					}
+					name=global.translation[2][global.languageselected]+": "+menuthing.difficulties[menuthing.difficulty]
+				}
+			}
+			button[2]={
+				name: global.translation[3][global.languageselected],
+				func: function(){
+					menuthing.settings=!menuthing.settings
+				}
+			}
+			button[3]={
+				name:"CREDITS",
+				func: function(){
+					menuthing.settings=!menuthing.settings
+					menuthing.credits=true
+				}
+			}
+			button[4]={
+				name:"CONTROLS",
+				func: function(){
+					menuthing.settings=!menuthing.settings
+					menuthing.controls=true
+				}
+			}
+			if(acheivment[20].unlocked)
+			{
+				button[5]={
+					name:"BOTS VS BOB MODE",
+					func: function(){
+						menuthing.botsvsbob=true
+					}
+				}
+			}
+		}
+		else if(menupos[0]!=0)
+		{
+			menupos[0]-=15
+			menupos[1]+=15
+		}
+	}
+	var ecs = 0
+	var why = 0
+	var num=0
+	if(!settings)
+	{
+		if(gamepad_button_check_pressed(0,gp_padl))
+		{
+			buttonselected-=1
+			if(buttonselected<0)
+			{
+				buttonselected=array_length(button)-1
+			}
+		}
+		if(gamepad_button_check_pressed(0,gp_padr))
+		{
+			buttonselected+=1
+			if(buttonselected>array_length(button)-1)
+			{
+				buttonselected=0
+			}
+		}
+		repeat(array_length(button))
+		{
+			draw_sprite(menubg,0,ecs,why)
+			if(buttonselected<0)
+			{
+				buttonselected=array_length(button)-1
+			}
+			if(buttonselected>array_length(button)-1)
+			{
+				buttonselected=0
+			}
+			draw_rectangle(ecs,why,ecs+256,why+128,true)
+			if(buttonselected==num)
+			{
+				draw_rectangle(ecs+16,why+16,ecs+256-16,why+128-16,true)
+			}
+			draw_text(ecs,why,button[num].name)
+			if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+256,why+128))
+			{
+				if(num==1)
+				{
+					var ecsy=0
+					var whyy=128
+					draw_rectangle(ecsy,whyy,ecsy+256,whyy+128,true)
+					draw_text_ext(ecsy,whyy,difficultiesdescriptions[difficulty],16,256)
+				}
+				if(mouse_check_button_pressed(mb_left))
+				{
+					button[num].func()
+				}
+			}
+			if(buttonselected==num)
+			{
+				if(num==1)
+				{
+					var ecsy=0
+					var whyy=128
+					draw_rectangle(ecsy,whyy,ecsy+256,whyy+128,true)
+					draw_text_ext(ecsy,whyy,difficultiesdescriptions[difficulty],16,256)
+				}
+				if(gamepad_button_check_pressed(0,gp_face1))
+				{
+					button[num].func()
+				}
+			}
+			num+=1
+			if(ecs>256*2)
+			{
+				ecs=0
+				why+=128
+			}
+			ecs+=256
+		}
+		ecs=0
+		why+=128+32
+		if(botsvsbob)
+		{
+			draw_text(ecs,why,"HIGH SCORE: "+string(bvbhs))
+		}
+		else
+		{
+			draw_text(ecs,why,"HIGH SCORE: "+string(hiscore))
+			draw_text(ecs+256,why,"GAME PROGRESS: "+string(count_acheviments())+"%")
+		}
+		why+=128
+		num=0
+		draw_text(ecs,why-64,inputs)
+		repeat(array_length(acheivment))
+		{
+			if(acheivment[num].unlocked&&!botsvsbob||!variable_struct_exists(acheivment[num],"hidden")&&!botsvsbob)
+			{
+				draw_rectangle(ecs,why,ecs+64,why+64,true)
+				var col=c_red
+				if(acheivment[num].unlocked)
+				{
+					col=c_white
+				}
+				if(variable_struct_exists(acheivment[num],"sprite"))
+				{
+					draw_sprite_ext(acheivment[num].sprite,0,ecs,why,1,1,0,col,1)
+				}
+				else
+				{
+					draw_sprite_ext(acheivment1,0,ecs,why,1,1,0,col,1)
+				}
+				if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+64,why+64))
+				{
+					draw_sprite(descbg,0,room_width-1024,room_height-256)
+					draw_set_halign(fa_center)
+					draw_text(room_width-512,room_height-256,acheivment[num].namey)
+					draw_text_ext(room_width-512,(room_height-256)+128,acheivment[num].desc,16,1024)
+					draw_set_halign(fa_left)
+					if(mouse_check_button_pressed(mb_left)&&acheivment[num].unlocked)
+					{
+						array_push(inputs,num)
+					}
+				}
+				ecs+=64
+			}
+			num+=1
+			if(ecs>128*4)
+			{
+				ecs=0
+				why+=64
+			}
+		}
+		why+=64
+		num=0
+		ecs=0
+		repeat(array_length(skinacheivment))
+		{
+			if(!variable_struct_exists(skinacheivment[num],"hidden")&&!botsvsbob||skinacheivment[num].unlocked&&!botsvsbob)
+			{
+				draw_rectangle(ecs,why,ecs+64,why+64,true)
+				var col=c_red
+				if(skinacheivment[num].unlocked)
+				{
+					col=c_white
+				}
+				if(variable_struct_exists(skinacheivment[num],"sprite"))
+				{
+					draw_sprite_ext(skinacheivment[num].sprite,0,ecs,why,1,1,0,col,1)
+				}
+				else
+				{
+					draw_sprite_ext(acheivment1,0,ecs,why,1,1,0,col,1)
+				}
+				if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+64,why+64))
+				{
+					draw_sprite(descbg,0,room_width-1024,room_height-256)
+					draw_set_halign(fa_center)
+					draw_text(room_width-512,room_height-256,skinacheivment[num].namey)
+					draw_text(room_width-512,(room_height-256)+128,skinacheivment[num].desc)
+
+					draw_set_halign(fa_left)
+					if(mouse_check_button_pressed(mb_left)&&skinacheivment[num].unlocked)
+					{
+						skin=num
+					}
+				}
+				ecs+=64
+			}
+			num+=1
+			if(ecs>128*4)
+			{
+				ecs=0
+				why+=64
+			}
+		}
+		if(!gay)
+		{
+			draw_sprite_ext(skins[skin],0,ecs+32,why+32,0.4,0.4,15,c_white,1)
+			ecs+=128
+		}
+		/*draw_rectangle(ecs,why,ecs+128,why+64,true)
+		draw_text(ecs,why,"toggle skin effects "+string(skineffectactive))
+		if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+128,why+64)&&mouse_check_button_pressed(mb_left))
+		{
+			skineffectactive=!skineffectactive
+		}*/
+	}
+	else if(!credits&&!controls)
+	{
+		draw_sprite(menubg,0,ecs,why)
+		draw_rectangle(ecs,why,ecs+256,why+128,true)
+		draw_text(ecs,why,"SETTINGS")
+		if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+256,why+128)&&mouse_check_button_pressed(mb_left)||gamepad_button_check_pressed(0,gp_face2))
+		{
+			settings=false
+		}
+		if(count_acheviments()>=100)
+		{
+			ecs+=256
+			draw_sprite(menubg,0,ecs,why)
+			draw_rectangle(ecs,why,ecs+256,why+128,true)
+			draw_text(ecs,why,"IMPORT CUSTOM SKIN")
+			if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+256,why+128)&&mouse_check_button_pressed(mb_left)||gamepad_button_check_pressed(0,gp_face1))
+			{
+				var _file=get_open_filename("png file|*.png","")
+				if(_file!="")
+				{
+					loadedskin[0]=sprite_add(_file,1,false,false,64,64)
+					loadedskin[1]=_file
+					array_pop(menuthing.skins)
+					array_push(menuthing.skins,menuthing.loadedskin[0])
+				}
+			}
+		}
+		ecs=0
+		why+=128
+		draw_text(ecs,why,"VOLUME")
+		why+=32
+		draw_rectangle(ecs,why,ecs+100,why+64,true)
+		if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+100,why+64)&&mouse_check_button(mb_left))
+		{
+			vol=mouse_x/100
+		}
+		draw_rectangle(ecs,why,ecs+vol*100,why+64,false)
+		why+=128
+		draw_text(ecs,why-32,"MAX PROJECTILES: "+string(maxproj))
+		draw_rectangle(ecs,why,ecs+200,why+64,true)
+		if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+200,why+64)&&mouse_check_button(mb_left))
+		{
+			maxproj=mouse_x*2.5
+		}
+		draw_rectangle(ecs,why,ecs+(maxproj/500)*200,why+64,false)
+		why+=128
+		draw_rectangle(ecs,why,ecs+256,why+128,true)
+		draw_text(ecs,why,"MUSIC THEME: "+musicthemes[musictheme])
+		if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+256,why+128)&&mouse_check_button_pressed(mb_left))
+		{
+			musictheme+=1
+			if(musictheme>=array_length(idlethemes))
+			{
+				musictheme=0
+			}
+			audio_stop_all()
+			audio_play_sound(menuthemes[musictheme],1000,true)
+		}
+		ecs+=256
+		draw_rectangle(ecs,why,ecs+256,why+128,true)
+		draw_text(ecs,why,"skin on bg"+string(gay))
+		if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+256,why+128)&&mouse_check_button_pressed(mb_left))
+		{
+			gay=!gay
+		}
+		ecs=0
+		why+=128
+		draw_rectangle(ecs,why,ecs+256,why+128,true)
+		draw_text(ecs,why,"RESET SAVE DATA")
+		if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+256,why+128)&&mouse_check_button_pressed(mb_left))
+		{
+			file_delete("savedshit.txt")
+			game_end()
+		}
+	}
+	else if(controls&&!credits)
+	{
+		draw_rectangle(ecs,why,ecs+256,why+128,true)
+		draw_text(ecs,why,"CONTROLS")
+		if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+256,why+128)&&mouse_check_button_pressed(mb_left)||gamepad_button_check_pressed(0,gp_face1))
+		{
+			settings=false
+			controls=false
+		}
+		why+=128
+		for (var i = 0; i < array_length(control); ++i) {
+		    draw_rectangle(ecs,why,ecs+512,why+128,true)
+			draw_text_ext(ecs,why,control[i].name,16,256)
+			ecs+=512
+			if(ecs>256*2)
+			{
+				ecs=0
+				why+=128
+			}
+		}
+	}
+	else
+	{
+		draw_rectangle(ecs,why,ecs+256,why+128,true)
+		draw_text(ecs,why,"CREDITS")
+		if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+256,why+128)&&mouse_check_button_pressed(mb_left)||gamepad_button_check_pressed(0,gp_face1))
+		{
+			settings=false
+			credits=false
+		}
+		why+=128
+		for (var i = 0; i < array_length(credit); ++i) {
+		    draw_rectangle(ecs,why,ecs+256,why+128,true)
+			draw_text_ext(ecs,why,credit[i].name,16,256)
+			if(point_in_rectangle(mouse_x,mouse_y,ecs,why,ecs+256,why+128)&&mouse_check_button_pressed(mb_left))
+			{
+				credit[i].func()
+			}
+			ecs+=256
+			if(ecs>256*4)
+			{
+				ecs=0
+				why+=128
+			}
+		}
+	}
+}
+else
+{
+	if(paused)
+	{
+		draw_sprite(pausedmoment,0,0,0)
+		if(keyboard_check_pressed(vk_space)||gamepad_button_check_pressed(0,gp_face1))
+		{
+			audio_stop_all()
+			room_goto(menu)
+			paused=false
+			audio_play_sound(menuthemes[musictheme],1000,true)
+		}
+	}
+	if(!paused&&room!=menu&&instance_exists(player))
+	{
+		var num=0
+		repeat(array_length(acheivment))
+		{
+			if(!acheivment[num].unlocked&&acheivment[num].func()&&alarm[1]<=0)
+			{
+				acheivmentnum=num
+				atype=0
+				alarm[1]=240
+				audio_play_sound(acheivmentunlocksound,1000,false)
+				acheivment[num].unlocked=acheivment[num].func()
+			}
+			else
+			{
+				num+=1
+			}
+		}
+		var num=1
+		repeat(array_length(skinacheivment)-1)
+		{
+			if(!skinacheivment[num].unlocked&&skinacheivment[num].func()&&alarm[1]<=0)
+			{
+				acheivmentnum=num
+				atype=1
+				alarm[1]=240
+				audio_play_sound(acheivmentunlocksound,1000,false)
+				skinacheivment[num].unlocked=skinacheivment[num].func()
+			}
+			else
+			{
+				num+=1
+			}
+		}
+	}
+	var ecs=1366-512
+	var why=0
+	if(alarm[1]>0)
+	{
+		if(atype==0)
+		{
+			draw_sprite(achbg,0,ecs,why)
+			if(variable_struct_exists(acheivment[acheivmentnum],"sprite"))
+			{
+				draw_sprite_ext(acheivment[acheivmentnum].sprite,0,ecs,why,1,1,0,c_white,1)
+			}
+			
+			draw_rectangle(ecs,why,ecs+512,why+128,true)
+			draw_text(ecs+128,why,"acheivment unlocked!")
+			draw_line(ecs+128,why+16,1366,why+16)
+			draw_text(ecs+128,why+16,menuthing.acheivment[acheivmentnum].namey)
+			draw_line(ecs+128,why+32,1366,why+32)
+			draw_text_ext(ecs+128,why+32,menuthing.acheivment[acheivmentnum].desc,16,128)
+		}
+		else
+		{
+			draw_sprite(achbg,0,ecs,why)
+			if(variable_struct_exists(skinacheivment[acheivmentnum],"sprite"))
+			{
+				draw_sprite_ext(skinacheivment[acheivmentnum].sprite,0,ecs,why,1,1,0,c_white,1)
+			}
+			draw_rectangle(ecs,why,ecs+512,why+128,true)
+			draw_text(ecs+128,why,"skin unlocked!")
+			draw_line(ecs+128,why+16,1366,why+16)
+			draw_text(ecs+128,why+16,menuthing.skinacheivment[acheivmentnum].namey)
+			draw_line(ecs+128,why+32,1366,why+32)
+			draw_text_ext(ecs+128,why+32,menuthing.skinacheivment[acheivmentnum].desc,16,128)
+		}
+	}
+}
+if(array_match(codey[0],inputs))
+{
+	botsvsbob=true
+	inputs=[]
+}
+if(array_match(codey[1],inputs))
+{
+	floorislava=true
+	audio_play_sound(BEWM,1000,false)
+	inputs=[]
+}
+if(array_match(codey[2],inputs))
+{
+	//skineffectactive=true
+	audio_play_sound(BEWM,1000,false)
+	inputs=[]
+}
+if(array_match(codey[3],inputs))
+{
+	knifeonly=true
+	audio_play_sound(BEWM,1000,false)
+	inputs=[]
+}

@@ -1,0 +1,304 @@
+/// @description Insert description here
+// You can write your code in this editor
+draw_healthbar(0,0,256,64,(hp/mhp)*100,c_black,c_red,c_red,0,true,false)
+draw_healthbar(0,0,256,32,(i[0]/120)*100,c_black,c_aqua,c_aqua,0,false,false)
+draw_healthbar(0,32,256,64,(i[1]/gun[gunselected].reload)*100,c_black,c_green,c_green,0,false,false)
+var ecs=0
+if(alarm[1]>0)
+{
+	draw_sprite(effect,1,ecs,64)
+	draw_sprite(timer,alarm[1]/60,ecs,64)
+	ecs+=65
+}
+if(alarm[7]>0)
+{
+	draw_sprite(effect,0,ecs,64)
+	draw_sprite(timer,alarm[7]/60,ecs,64)
+	ecs+=65
+}
+draw_text(0,0,string(hp)+"/"+string(mhp))
+draw_text(0,96+32,"score: "+string(scorey))
+draw_text(0,128+32,"money: "+string(money))
+
+draw_sprite(Sprite57,melee,0,128+64)
+if(gamepad_button_check_pressed(0,gp_padd))
+{
+	menuselected+=1
+	if(menuselected>2)
+	{
+		menuselected=0
+	}
+}
+if(gamepad_button_check_pressed(0,gp_padu))
+{
+	menuselected-=1
+	if(menuselected<0)
+	{
+		menuselected=2
+	}
+}
+if(gamepad_button_check_pressed(0,gp_padr))
+{
+	itemselected+=1
+}
+if(gamepad_button_check_pressed(0,gp_padl))
+{
+	itemselected-=1
+}
+if(place_meeting(x,y,shop))
+{
+	if(keyboard_check_pressed(ord("Q"))||gamepad_button_check_pressed(0,gp_face4))
+	{
+		shopping=!shopping
+	}
+}
+else
+{
+	shopping=false
+}
+if(shopping)
+{	
+	i[1]=gun[gunselected].reload
+	var ecs = 0
+	var num = bulletmin
+	var why = 256
+	draw_sprite(descbg,0,ecs,why)
+	var nummy=0
+	if(!gamepad_is_connected(0)||menuselected==0)
+	{
+		draw_sprite(shopbg,0,ecs,why)
+		draw_rectangle(ecs,why,ecs+64,why+64,true)
+		draw_text(ecs,why,"previous")
+		if(point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),ecs,why,ecs+64,why+64)&&mouse_check_button_pressed(mb_left))
+		{
+			bulletmin-=1
+			if(bulletmin<0)
+			{
+				bulletmin+=1
+			}
+		}
+		ecs += ((8)*64)+64
+		draw_sprite(shopbg,0,ecs,why)
+		draw_rectangle(ecs,why,ecs+64,why+64,true)
+		draw_text(ecs,why,"next")
+		if(point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),ecs,why,ecs+64,why+64)&&mouse_check_button_pressed(mb_left))
+		{
+			bulletmin+=1
+			if(bulletmin>menuthing.getacheiments()-6)
+			{
+				bulletmin-=1
+			}
+		}
+		var ecs = 64
+		repeat(8)
+		{
+			if(itemselected>7)
+			{
+				bulletmin+=1
+				itemselected-=2
+				if(bulletmin>menuthing.getacheiments()-6)
+				{
+					bulletmin-=1
+				}
+			}
+			if(itemselected<0)
+			{
+				bulletmin-=1
+				itemselected+=1
+				if(bulletmin<0)
+				{
+					bulletmin+=1
+				}
+			}
+			show_debug_message([itemselected,bulletmin])
+			if(num>0)
+				{
+					while(num<array_length(menuthing.acheivment)&&!menuthing.acheivment[num-1].unlocked)
+					{
+						num+=1
+					}
+					if(num>array_length(player.ammos)||num-1>array_length(menuthing.acheivment)-1)
+					{
+						break;
+					}
+					if(!menuthing.acheivment[num-1].unlocked)
+					{
+						break;
+					}
+				}
+			if(num<array_length(player.ammos))
+			{
+				draw_sprite(shopbg,0,ecs,why)
+				draw_rectangle(ecs,why,ecs+64,why+64,true)
+				if(ammo==ammos[num])
+				{
+					draw_rectangle(ecs+8,why+8,ecs+64-8,why+64-8,true)
+				}
+				draw_sprite(object_get_sprite(ammos[num]),0,ecs+32,why+32)
+				if(point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),ecs,why,ecs+64,why+64)||itemselected==nummy&&gamepad_is_connected(0))
+				{
+					draw_sprite(descbg,0,camera_get_view_width(view_camera)-1024,camera_get_view_height(view_camera)-256)
+					draw_rectangle(camera_get_view_width(view_camera)-1024,camera_get_view_height(view_camera)-256,camera_get_view_width(view_camera),camera_get_view_height(view_camera),true)
+					draw_set_halign(fa_center)
+					if(array_length(descs)>num)
+					{
+						draw_text_ext(camera_get_view_width(view_camera)-512,(camera_get_view_height(view_camera)-256)+128,descs[num],16,1024)
+					}
+					draw_set_halign(fa_left)
+					if(mouse_check_button_pressed(mb_left)||itemselected==nummy&&gamepad_is_connected(0))
+					{
+						ammo=ammos[num]
+					}
+				}
+			}
+			ecs+=64
+			num+=1
+			nummy+=1
+		}
+	}
+	ecs = 0
+	why+=64
+	num = 0
+	if(!gamepad_is_connected(0)||menuselected==1)
+	{
+		repeat(array_length(gun))
+		{
+			if(itemselected>array_length(gun)-1)
+			{
+				itemselected=0
+			}
+			if(itemselected<0)
+			{
+				itemselected=array_length(gun)-1
+			}
+				draw_sprite(shopbg,0,ecs,why)
+				draw_rectangle(ecs,why,ecs+64,why+64,true)
+				if(gun[num].owned)
+				{
+					draw_sprite_ext(gun[num].sprite,0,ecs+32,why+32,0.5,0.5,0,c_white,1)
+					draw_set_halign(fa_center)
+					draw_text(ecs+32,why,"owned")
+					draw_set_halign(fa_left)
+				}
+				else
+				{
+					draw_sprite_ext(gun[num].sprite,0,ecs+32,why+32,0.5,0.5,0,c_red,1)
+					draw_set_halign(fa_center)
+					draw_text(ecs+32,why,string(gun[num].cost))
+					draw_set_halign(fa_left)
+				}
+				if(gunselected==num)
+				{
+					draw_rectangle(ecs+8,why+8,ecs+64-8,why+64-8,true)
+				}
+				if(itemselected==num)
+				{
+					draw_rectangle(ecs+16,why+16,ecs+64-16,why+64-16,true)
+				}
+				if(point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),ecs,why,ecs+64,why+64)||itemselected==num&&gamepad_is_connected(0))
+				{
+					draw_sprite(descbg,0,camera_get_view_width(view_camera)-1024,camera_get_view_height(view_camera)-256)
+					draw_rectangle(camera_get_view_width(view_camera)-1024,camera_get_view_height(view_camera)-256,camera_get_view_width(view_camera),camera_get_view_height(view_camera),true)
+					draw_set_halign(fa_center)
+					if(variable_struct_exists(gun[num],"desc"))
+					{
+						draw_text_ext(camera_get_view_width(view_camera)-512,(camera_get_view_height(view_camera)-256)+128,gun[num].desc,16,1024)
+					}
+					draw_set_halign(fa_left)
+					if(mouse_check_button_pressed(mb_left)||gamepad_button_check_pressed(0,gp_face1))
+					{
+						if(gun[num].owned)
+						{
+							gunselected=num 
+							gun[num].owned=true
+						}
+						else if(money>=gun[num].cost)
+						{
+							gunselected=num 
+							gun[num].owned=true
+							money-=gun[num].cost
+							menuthing.thingsbought+=1
+						}
+					}
+				}
+				ecs+=64
+				if(ecs>1024-64)
+				{
+					ecs=0
+					why+=64
+				}
+				num+=1
+			
+		}
+	}
+	num=0
+	ecs = 0
+	why+=64
+	if(!gamepad_is_connected(0)||menuselected==2)
+	{
+		repeat(array_length(supply))
+		{
+			if(itemselected>array_length(supply)-1)
+			{
+				itemselected=0
+			}
+			if(itemselected<0)
+			{
+				itemselected=array_length(supply)-1
+			}
+			if(!supply[num].bought)
+			{
+				if(supply[num].price<9999999)
+				{
+					draw_sprite(shopbg,0,ecs,why)
+					draw_rectangle(ecs,why,ecs+64,why+64,true)
+					draw_sprite(supply[num].sprite,0,ecs+32,why+32)
+					draw_set_halign(fa_center)
+					draw_text(ecs+32,why+48,string(supply[num].price))
+					draw_set_halign(fa_left)
+					if(point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),ecs,why,ecs+64,why+64)||itemselected==num&&gamepad_is_connected(0))
+					{
+						draw_sprite(descbg,0,camera_get_view_width(view_camera)-1024,camera_get_view_height(view_camera)-256)
+						draw_rectangle(camera_get_view_width(view_camera)-1024,camera_get_view_height(view_camera)-256,camera_get_view_width(view_camera),camera_get_view_height(view_camera),true)
+						draw_set_halign(fa_center)
+						if(variable_struct_exists(supply[num],"desc"))
+						{
+							draw_text_ext(camera_get_view_width(view_camera)-512,(camera_get_view_height(view_camera)-256)+128,supply[num].desc,16,1024)
+						}
+						draw_set_halign(fa_left)
+						if(gamepad_button_check_pressed(0,gp_face1)||mouse_check_button_pressed(mb_left))
+						{
+							if(!supply[num].bought&&money>=supply[num].price)
+							{
+								money-=supply[num].price
+								supply[num].func()
+								menuthing.thingsbought+=1
+							}
+						}
+					}
+					ecs+=64
+					if(ecs>1024-64)
+					{
+						ecs=0
+						why+=64
+					}
+				}
+			}
+			if(itemselected==num)
+			{
+				draw_rectangle(ecs+16,why+16,ecs+64-16,why+64-16,true)
+			}
+			num+=1
+		}
+	}
+}
+
+eval-=0.01*!audio_is_playing(eventtheme)
+if(eval>0)
+{
+	draw_set_font(global.fontwarioware)
+	draw_set_halign(fa_center)
+	draw_text_ext_transformed_color(camera_get_view_width(view_camera[0])/2,0,evtext,61,99999999,1,1,random_range(-3,3),c_green,c_green,c_green,c_green,eval)
+	draw_set_halign(fa_left)
+	draw_set_font(Font1)
+}

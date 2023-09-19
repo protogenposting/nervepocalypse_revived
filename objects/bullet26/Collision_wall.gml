@@ -1,0 +1,12 @@
+/// @description Insert description here
+// You can write your code in this editor
+if(instance_exists(zombie))
+{
+inst=instance_furthest(x,y,zombie)
+direction=point_direction(x,y,inst.x,inst.y)
+speed+=1
+}
+else
+{
+	instance_destroy()
+}

@@ -1,0 +1,91 @@
+{"translations":[["English","Español","ВТОРЖЕНИЕ","Ελληνικά","Română"]
+
+,["INSERT COIN","INSERTE MONEDA","ВСТАВЬТЕ МОНЕТУ","Εισάγετε νόμισμα","introduce moneda"]
+
+,["DIFFICULTY","DIFICULTAD","СЛОЖНОСТЬ","Δυσκολία","difficultate"]
+
+,["SETTINGS","AJUSTES","НАСТРОЙКИ","Ρυθμίσεις","setări"]
+
+,["CREDITS","CREDITOS","ТИТРЫ","Πιστώσεις","creatori"]
+
+,["CONTROLS","CONTROLES","УПРAВЛЕНИЕ","Ελέγχους","controale"]
+
+,["BOTS VS BOB MODE","MODO BOTS VS BOB","РЕЖИМ БОБ ПРОТИВ БОТОВ","Λειτουργία Ρομπότ εναντίον Μπόμπ","modul roboți vs bob"]
+
+,["HIGH SCORE: ","PUNTUACIÓN MÁS ALTA","ОЧКИ","Υψηλότερο σκορ","scor maxim"]
+
+,["toggle skin effects ","CAMBIAR EFECTOS DE PIEL","ВКЛЮЧИТЬ СПЕЦ-ЭФФЕКТЫ ДЛЯ ТЕКУЩЕГО СКИНА","Εναλλαγή εφέ εμφάνισης","pornește efectele cosmeticelor"]
+
+,["VOLUME","VOLUMEN","ГРОМКОСТЬ","Ένταση Ήχου","volum"]
+
+,["MAX PROJECTILES","PROYECTILES MÁX.","","Μέγ. Βλήματα","projectile maxime"]
+
+,["MUSIC STYLE","ESTILO DE MUSICA","","Στυλ μουσικής","stil muzică"]
+
+,["skin on background","piel en el fondo","","Εμφάνιση στο φόντο","cosmeticul din fundal"]
+
+,["RESET GAME DATA","RESTABLECER DATOS DEL JUEGO","","","resetează data jocului salvat"]
+
+,["MUSIC STYLE","ESTILO DE MUSICA","","","stil muzică"]
+
+,["Achievement unlocked!","¡Logro desbloqueado!","","","realizare obținuta"]
+
+,["Skin unlocked!","¡Piel desbloqueada!","","","cosmetic deblocat"]
+
+,["Carson but protogen (programmer/ideas/music)","Carson but protogen (programador/ideas/música)","","","Carson dar protogent (programator/idei/musică)"]
+
+,["Aaronz2464 (original scratch game/art)","Aaronz2464 (arte/juego original de Scratch)","","","Aaronz2464 (creatorul jocului original/artă)"]
+
+,["scratchguy23 (music)","scratchguy23 (música)","","","scratchguy23 (musică)"]
+
+,["J7unes (music/gun designs)","J7unes (música/diseños de armas)","","","J7unes (musică/arta armelor"]
+
+,["pvzfanboy (ideas/knife)","pvzfanboy (ideas/cuchillo)","","","pvzfanboy (idei/cuțit)"]
+
+,["Sunny (music)","Sunny (música)","","","Sunny (musică"]
+
+,["Join the discord!","¡Únete al servidor de Discord!","","","intră pe server!"]
+
+,["Move: Wasd/arrow keys","Mover: Wasd/teclas de flecha","","","Mișcăte: WASD/Săgeti"]
+
+,["Jump: space/up","Saltar: barra espaciadora/arriba","","","Salt: Spațiu/sus"]
+
+,["Glide: Q","Planeo: Q","","","Alunecă: Q"]
+
+,["Fire: LMB","Disparar: Botón izquierdo","","","Împușcă: mouse stânga"]
+
+,["Lunge: RMB","Rodar: Botón derecho","","","Fandare: mouse dreapta"]
+
+,["Pound: S","Aporrear: S","","","Zdrobit: S"]
+
+,["Move: Lstick","","","","Mișcăte: Lstick"]
+
+,["Aim: Rstick","","","","Țintește: Rstick"]
+
+,["Jump: Face1","","","",""]
+
+,["Glide: Left Back Shoulder","","","",""]
+
+,["Fire: Right Back Shoulder","","","",""]
+
+,["Lunge: Face2","","","",""]
+
+,["Pound: Face3","","","",""]
+
+,["Shop: Face4","","","",""]
+
+,["Change Shop: Pad Up/Down","","","",""]
+
+,["Select Shop Item: Pad Left/Right","","","",""]
+
+,["First Steps","Primeros Pasos","","",""]
+
+,["Get 5 kills... you're doing great :> (unlocks fire bullets)","Mata a 5 zombis... lo estás haciendo muy bien :> (desbloquea balas de fuego)","","",""]
+
+,["i quit...","Renunció","","",""]
+
+,["kill any boss (unlocks piercing bullets)","Mata a cualquier jefe (desbloquea balas penetrantes)","","",""]
+
+,["LOOK MOM I CAN FLY","MIRA MAMÁ PUEDO VOLAR","","",""]
+
+,["fly at game-breaking speeds! (unlocks bee bullets)","¡Vuela a velocidades increíbles! (desbloquea balas de abeja)","","",""],]} 
