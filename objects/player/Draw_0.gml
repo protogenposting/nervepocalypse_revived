@@ -1,53 +1,13 @@
  /// @description Insert description here
 // You can write your code in this editor
-if(menuthing.skins[menuthing.skin]==beatboppinskin)
-{
-	var beatlen=(60/bpm)/2
-	if(currenttheme==audtheme)
-	{
-		if(audio_sound_get_track_position(currenttheme)<=0.05)
-		{
-			beat=0
-			nbeat[0]=beatlen
-		}
-		if(audio_sound_get_track_position(currenttheme)>nbeat[0])
-		{
-			image_index+=1
-			beat+=1
-			nbeat[0]+=beatlen
-		}
-	}
-	if(currenttheme==audboss)
-	{
-		if(audio_sound_get_track_position(currenttheme)<=0.05)
-		{
-			beat=0
-			nbeat[1]=beatlen
-		}
-		if(audio_sound_get_track_position(currenttheme)>nbeat[1])
-		{
-			image_index+=1
-			beat+=1
-			nbeat[1]+=beatlen
-		}
-	}
-	if(menuthing.skineffectactive)
-	{
-		if(abs(audio_sound_get_track_position(currenttheme)-nbeat[0])<=0.1||abs(audio_sound_get_track_position(currenttheme)-nbeat[1])<=0.1)
-		{
-			if(_input.firereleased)
-			{
-				combo+=0.2
-			}
-		}
-		else if(combo>0)
-		{
-			combo-=0.01
-		}
-	}
+image_xscale=-sign((mouse_x<x)-0.5)
+function draw_player(col){
+	draw_sprite_ext(sprite_index,image_index,x,y,image_xscale*2,2,0,col,drawing)
+	var ang=point_direction(x, y-64, mouse_x,mouse_y)
+	draw_sprite_ext(head1,image_index,x,y-64,2,image_xscale*2,ang,col,drawing)
+	draw_sprite_ext(eyes,menuthing.eye,x,y-64,2,image_xscale*2,ang,col,drawing)
+	draw_sprite_ext(mouths,menuthing.mouth,x,y-64,2,image_xscale*2,ang,col,drawing)
 }
-
-
 uial-=0.001
 draw_sprite_ext(buttons,1,bbox_right+64,bbox_top-64,1,1,0,c_white,uial)
 draw_sprite_ext(scrolltoswap,1,x,bbox_top-96,1,1,0,c_white,uial)
@@ -74,7 +34,7 @@ if(!rolling)
 	if(hangglider)
 	{
 		rottyoa-=(rottyoa-((-image_xscale*65)))/10
-		draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale*sign(grav),rottyoa,col,drawing)
+		draw_player(col)
 		draw_sprite_ext(glider,0,x,bbox_top+32,-image_xscale,image_yscale*sign(grav),0,col,drawing)
 	}
 	else
@@ -97,12 +57,12 @@ if(!rolling)
 		{
 			extend+=((vsp/100))
 		}
-		draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale*extend*grav,rottyoa,col,drawing)
+		draw_player(col)
 	}
 }
 else
 {
-	draw_sprite_ext(sprite_index,0,x,y+32,image_xscale,0.5,irandom(360),col,drawing)
+	draw_player(col)
 }
 if(fire)
 {
@@ -118,7 +78,13 @@ if(!rolling&&!shopping)
 	if(!melee)
 	{
 		var ang=point_direction(x, y, mouse_x,mouse_y)
-		draw_sprite_ext(gun[gunselected].sprite,image_index,x+lengthdir_x(kb,ang+180),y+lengthdir_y(kb,ang+180),1,-sign((mouse_x<x)-0.5),ang,c_white,1)
+		draw_sprite_ext(gun[gunselected].sprite,image_index,x+lengthdir_x(-64+kb,ang+180),y+lengthdir_y(-64+kb,ang+180),1,-sign((mouse_x<x)-0.5),ang,c_white,1)
+		
+		
+		draw_sprite_ext(fronthand1,image_index,x+lengthdir_x(-64+kb,ang+180),y+lengthdir_y(-64+kb,ang+180),2,-sign((mouse_x<x)-0.5)*2,ang,c_white,1)
+		draw_sprite_ext(backhand1,image_index,x+lengthdir_x(32,ang+180),y+lengthdir_y(32,ang+180),2,-sign((mouse_x<x)-0.5)*2,ang,c_white,1)
+		
+		
 		if(charge>0)
 		{
 			var offsetx=-image_xscale*128

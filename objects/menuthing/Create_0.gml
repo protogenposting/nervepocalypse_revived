@@ -5,6 +5,9 @@ controls=false
 
 skineffectactive=false
 
+eye=0
+mouth=0
+
 codey[0]=[6,9,4,2,0]
 codey[1]=[0,4,0,4]
 codey[2]=[8,5,2,3]

@@ -868,8 +868,6 @@ hitfunc=function(targ){
 knifedam=4
 alarm[0]=256
 
-image_speed=0
-
 if(instance_exists(multiplayer))
 {
 	instance_destroy()
@@ -904,7 +902,7 @@ destroy_bullets=function(number,target){
 	}
 }
 
-sprite_index=menuthing.skins[menuthing.skin]
+//sprite_index=menuthing.skins[menuthing.skin]
 
 alarm[6]=60*15
 

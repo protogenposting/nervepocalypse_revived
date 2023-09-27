@@ -53,8 +53,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Sprite1",
-    "path": "sprites/Sprite1/Sprite1.yy",
+    "name": "torso1",
+    "path": "sprites/torso1/torso1.yy",
   },
   "spriteMaskId": {
     "name": "Sprite1",

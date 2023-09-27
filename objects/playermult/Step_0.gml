@@ -14,7 +14,7 @@ if(_input.fire)
 i[0]-=1
 i[1]-=1
 
-if(kb>0)
+if(kb>32)
 {
 	kb-=1
 }
