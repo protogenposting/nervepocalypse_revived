@@ -37,15 +37,17 @@ function draw_player(col){
 	var offsety=frot/100
 	var rottyoay=0
 	var lenny=8
+	var foff=0
 	if(vsp<0)
 	{
 		frot=-90
 		frot2=-90
 		rottyoay=-90*image_xscale
 		lenny=-10*image_xscale
+		foff=4
 	}
-	draw_sprite_ext(foot1,image_index,x-16+lengthdir_x(lenny,90-frot2*image_xscale),y+40+lengthdir_y(lenny,90-frot2*image_xscale)-offsety,image_xscale*1.5,1.5,rottyoay,col,drawing)
-	draw_sprite_ext(foot1,image_index,x+16+lengthdir_x(lenny,270-frot*image_xscale),y+40+lengthdir_y(lenny,270-frot*image_xscale)-offsety,image_xscale*1.5,1.5,rottyoay,col,drawing)
+	draw_sprite_ext(foot1,image_index,x-16+lengthdir_x(lenny,90-frot2*image_xscale),y+40+lengthdir_y(lenny,90-frot2*image_xscale)-offsety+foff,image_xscale*1.5,1.5,rottyoay,col,drawing)
+	draw_sprite_ext(foot1,image_index,x+16+lengthdir_x(lenny,270-frot*image_xscale),y+40+lengthdir_y(lenny,270-frot*image_xscale)-offsety+foff,image_xscale*1.5,1.5,rottyoay,col,drawing)
 	var ang=point_direction(x, y, mouse_x,mouse_y)
 	draw_sprite_ext(backhand1,image_index,x+lengthdir_x(32,ang+180),y+lengthdir_y(32,ang+180),1.5,-sign((mouse_x<x)-0.5)*1.5,ang,c_white,1)
 	draw_sprite_ext(sprite_index,image_index,x,y-offsety,image_xscale*1.5,1.5,0,col,drawing)
