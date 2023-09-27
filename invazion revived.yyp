@@ -200,6 +200,7 @@
     {"id":{"name":"hitman","path":"sprites/hitman/hitman.yy",},},
     {"id":{"name":"bossattackproot","path":"sounds/bossattackproot/bossattackproot.yy",},},
     {"id":{"name":"effect","path":"sprites/effect/effect.yy",},},
+    {"id":{"name":"foot1","path":"sprites/foot1/foot1.yy",},},
     {"id":{"name":"botsvsboblogo2","path":"sprites/botsvsboblogo2/botsvsboblogo2.yy",},},
     {"id":{"name":"sciencetheme","path":"sounds/sciencetheme/sciencetheme.yy",},},
     {"id":{"name":"Sprite65","path":"sprites/Sprite65/Sprite65.yy",},},

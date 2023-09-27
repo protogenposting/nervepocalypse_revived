@@ -169,6 +169,7 @@
     {"name":"bullet9","order":29,"path":"objects/bullet9/bullet9.yy",},
     {"name":"bossattackproot","order":9,"path":"sounds/bossattackproot/bossattackproot.yy",},
     {"name":"effect","order":41,"path":"sprites/effect/effect.yy",},
+    {"name":"foot1","order":6,"path":"sprites/foot1/foot1.yy",},
     {"name":"botsvsboblogo2","order":18,"path":"sprites/botsvsboblogo2/botsvsboblogo2.yy",},
     {"name":"sciencetheme","order":26,"path":"sounds/sciencetheme/sciencetheme.yy",},
     {"name":"Sprite65","order":50,"path":"sprites/Sprite65/Sprite65.yy",},

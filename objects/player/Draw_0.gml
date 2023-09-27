@@ -1,12 +1,36 @@
  /// @description Insert description here
 // You can write your code in this editor
 image_xscale=-sign((mouse_x<x)-0.5)
+if(abs(hsp)>0.1)
+{
+	if(frot>45||frot<-45)
+	{
+		negfrot=!negfrot
+	}
+	if(negfrot)
+	{
+		frot-=movespd
+	}
+	if(!negfrot)
+	{
+		frot+=movespd
+	}
+}
+else
+{
+	frot-=(frot)/10
+}
 function draw_player(col){
-	draw_sprite_ext(sprite_index,image_index,x,y,image_xscale*2,2,0,col,drawing)
-	var ang=point_direction(x, y-64, mouse_x,mouse_y)
-	draw_sprite_ext(head1,image_index,x,y-64,2,image_xscale*2,ang,col,drawing)
-	draw_sprite_ext(eyes,menuthing.eye,x,y-64,2,image_xscale*2,ang,col,drawing)
-	draw_sprite_ext(mouths,menuthing.mouth,x,y-64,2,image_xscale*2,ang,col,drawing)
+	var offsety=frot/10
+	draw_sprite_ext(foot1,image_index,x+16+lengthdir_x(16,270+frot),y+lengthdir_y(48,270+frot)-offsety,image_xscale*1.5,1.5,frot,col,drawing)
+	draw_sprite_ext(foot1,image_index,x-16+lengthdir_x(16,270-frot),y+lengthdir_y(48,270-frot)-offsety,image_xscale*1.5,1.5,-frot,col,drawing)
+	var ang=point_direction(x, y, mouse_x,mouse_y)
+	draw_sprite_ext(backhand1,image_index,x+lengthdir_x(32,ang+180),y+lengthdir_y(32,ang+180)-offsety,1.5,-sign((mouse_x<x)-0.5)*1.5,ang,c_white,1)
+	draw_sprite_ext(sprite_index,image_index,x,y-offsety,image_xscale*1.5,1.5,0,col,drawing)
+	var ang=point_direction(x+image_xscale*8, y-48-offsety, mouse_x,mouse_y)
+	draw_sprite_ext(head1,image_index,x+image_xscale*8,y-48-offsety,1.5,image_xscale*1.5,ang,col,drawing)
+	draw_sprite_ext(eyes,menuthing.eye,x-8*-image_xscale+lengthdir_x(10,ang),y-40+lengthdir_y(8,ang)-offsety,1.5,image_xscale*1.5,ang,col,drawing)
+	draw_sprite_ext(mouths,menuthing.mouth,x-8*-image_xscale+lengthdir_x(10,ang),y-40+lengthdir_y(8,ang)-offsety,1.5,image_xscale*1.5,ang,col,drawing)
 }
 uial-=0.001
 draw_sprite_ext(buttons,1,bbox_right+64,bbox_top-64,1,1,0,c_white,uial)
@@ -81,8 +105,7 @@ if(!rolling&&!shopping)
 		draw_sprite_ext(gun[gunselected].sprite,image_index,x+lengthdir_x(-64+kb,ang+180),y+lengthdir_y(-64+kb,ang+180),1,-sign((mouse_x<x)-0.5),ang,c_white,1)
 		
 		
-		draw_sprite_ext(fronthand1,image_index,x+lengthdir_x(-64+kb,ang+180),y+lengthdir_y(-64+kb,ang+180),2,-sign((mouse_x<x)-0.5)*2,ang,c_white,1)
-		draw_sprite_ext(backhand1,image_index,x+lengthdir_x(32,ang+180),y+lengthdir_y(32,ang+180),2,-sign((mouse_x<x)-0.5)*2,ang,c_white,1)
+		draw_sprite_ext(fronthand1,image_index,x+lengthdir_x(-64+kb,ang+180),y+lengthdir_y(-64+kb,ang+180),1.5,-sign((mouse_x<x)-0.5)*1.5,ang,c_white,1)
 		
 		
 		if(charge>0)
