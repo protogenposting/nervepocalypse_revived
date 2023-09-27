@@ -1,29 +1,47 @@
  /// @description Insert description here
 // You can write your code in this editor
 image_xscale=-sign((mouse_x<x)-0.5)
-if(abs(hsp)>0.1)
+if(abs(vsp)>0)
 {
-	if(frot>45||frot<-45)
+	negfrot=false
+	frot-=(frot-180)/10
+	frot2-=(frot2)/10
+}
+else if(abs(hsp)>0.1)
+{
+	if(lvsp!=0&&vsp==0)
 	{
-		negfrot=!negfrot
+		frot=0
+		frot2=180
+	}
+	frot+=movespd*2
+	if(frot>=360)
+	{
+		frot-=360
+	}
+	if(frot>=180)
+	{
+		negfrot=true
 	}
 	if(negfrot)
 	{
-		frot-=movespd
-	}
-	if(!negfrot)
-	{
-		frot+=movespd
+		frot2+=movespd*2
+		if(frot2>=360)
+		{
+			frot2-=360
+		}
 	}
 }
 else
 {
+	negfrot=false
 	frot-=(frot)/10
+	frot2-=(frot2-180)/10
 }
 function draw_player(col){
-	var offsety=frot/10
-	draw_sprite_ext(foot1,image_index,x+16+lengthdir_x(16,270+frot),y+lengthdir_y(48,270+frot)-offsety,image_xscale*1.5,1.5,frot,col,drawing)
-	draw_sprite_ext(foot1,image_index,x-16+lengthdir_x(16,270-frot),y+lengthdir_y(48,270-frot)-offsety,image_xscale*1.5,1.5,-frot,col,drawing)
+	var offsety=frot/100
+	draw_sprite_ext(foot1,image_index,x+16+lengthdir_x(8,270-frot*image_xscale),y+40+lengthdir_y(8,270-frot*image_xscale)-offsety,image_xscale*1.5,1.5,0,col,drawing)
+	draw_sprite_ext(foot1,image_index,x-16+lengthdir_x(8,90-frot2*image_xscale),y+40+lengthdir_y(8,90-frot2*image_xscale)-offsety,image_xscale*1.5,1.5,0,col,drawing)
 	var ang=point_direction(x, y, mouse_x,mouse_y)
 	draw_sprite_ext(backhand1,image_index,x+lengthdir_x(32,ang+180),y+lengthdir_y(32,ang+180)-offsety,1.5,-sign((mouse_x<x)-0.5)*1.5,ang,c_white,1)
 	draw_sprite_ext(sprite_index,image_index,x,y-offsety,image_xscale*1.5,1.5,0,col,drawing)

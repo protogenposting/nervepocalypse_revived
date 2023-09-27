@@ -1,6 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 frot=0
+frot2=180
 negfrot=false;
 menuthing.kills=0
 charge=0
