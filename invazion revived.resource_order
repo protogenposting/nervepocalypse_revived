@@ -12,11 +12,11 @@
     {"name":"Shaders","order":5,"path":"folders/Shaders.yy",},
     {"name":"Sounds","order":2,"path":"folders/Sounds.yy",},
     {"name":"acheivments","order":4,"path":"folders/Sprites/acheivments.yy",},
+    {"name":"body parts","order":35,"path":"folders/Sprites/body parts.yy",},
     {"name":"skins","order":11,"path":"folders/Sprites/skins.yy",},
     {"name":"upgrades","order":33,"path":"folders/Sprites/upgrades.yy",},
     {"name":"Tile Sets","order":1,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":7,"path":"folders/Timelines.yy",},
-    {"name":"body parts","order":35,"path":"folders/Sprites/body parts.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"Script2","order":1,"path":"scripts/Script2/Script2.yy",},

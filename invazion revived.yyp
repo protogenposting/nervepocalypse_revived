@@ -24,11 +24,11 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sounds","folderPath":"folders/Sounds.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprites","folderPath":"folders/Sprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"acheivments","folderPath":"folders/Sprites/acheivments.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"body parts","folderPath":"folders/Sprites/body parts.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"skins","folderPath":"folders/Sprites/skins.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"upgrades","folderPath":"folders/Sprites/upgrades.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"body parts","folderPath":"folders/Sprites/body parts.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"GameJolt_API_Documentation.pdf","CopyToMask":-1,"filePath":"datafiles",},
