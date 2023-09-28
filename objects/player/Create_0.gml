@@ -83,7 +83,6 @@ gun[0]={
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)
 			inst.image_angle=inst.direction
 			inst.damage*=player.combo
 			player.i[1]=reload
@@ -137,7 +136,6 @@ gun[2]={
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)+irandom_range(-45,45)
 			inst.image_angle=inst.direction
 			inst.damage*=player.combo
 			player.i[1]=reload
@@ -163,7 +161,6 @@ gun[3]={
 				var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 				inst.x=new_x
 				inst.y=new_y
-				inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)
 				inst.image_angle=inst.direction
 				inst.damage*=player.combo
 				player.i[1]=reload
@@ -188,19 +185,17 @@ gun[4]={
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)
 			inst.image_angle=inst.direction
 			inst.damage*=player.combo
 			repeat(5)
 			{
 				inst=instance_create_depth(player.x,player.y,0,ammotype)
-				inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)
+				inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)+random_range(-45,45)
 				inst.speed=15
 				var new_x = inst.x + lengthdir_x(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 				var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 				inst.x=new_x
 				inst.y=new_y
-				inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)+random_range(-45,45)
 				inst.image_angle=inst.direction
 				inst.damage*=player.combo
 			}
@@ -226,28 +221,25 @@ gun[6]={
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)
 			inst.image_angle=inst.direction
 			inst.damage*=player.combo
 			
 			inst=instance_create_depth(player.x,player.y,0,bulletghost)
-			inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)
+			inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)+45
 			inst.speed=15
 			var new_x = inst.x + lengthdir_x(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)+45
 			inst.image_angle=inst.direction
 			
 			inst=instance_create_depth(player.x,player.y,0,bulletghost)
-			inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)
+			inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)-45
 			inst.speed=15
 			var new_x = inst.x + lengthdir_x(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)-45
 			inst.image_angle=inst.direction
 			
 			player.i[1]=reload
@@ -274,20 +266,18 @@ gun[5]={
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)
 			inst.image_angle=inst.direction
 			inst.damage*=player.combo
 			var ecs=sprite_get_width(sprite)-sprite_get_xoffset(sprite)
 			repeat(4)
 			{
 				inst=instance_create_depth(player.x,player.y,0,bullet4)
-				inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)
+				inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)-45
 				inst.speed=15
 				var new_x = inst.x + lengthdir_x(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 				var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 				inst.x=new_x
 				inst.y=new_y
-				inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)-45
 				inst.image_angle=inst.direction
 				ecs-=15
 				inst.damage*=player.combo
@@ -303,7 +293,6 @@ gun[5]={
 				var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 				inst.x=new_x
 				inst.y=new_y
-				inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)
 				inst.image_angle=inst.direction
 				ecs-=15
 				inst.damage*=player.combo
@@ -323,13 +312,12 @@ gun[7]={
 		if(player.i[1]<=0)
 		{
 			inst=instance_create_depth(player.x,player.y,0,ammotype)
-			inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)
+			inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)+random_range(-25,25)
 			inst.speed=15
 			var new_x = inst.x + lengthdir_x(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)+random_range(-25,25)
 			inst.image_angle=inst.direction
 			inst.damage*=player.combo
 			player.i[1]=reload
@@ -349,14 +337,13 @@ gun[8]={
 		{
 			var diry=point_direction(player.x,player.y,mouse_x,mouse_y)+random_range(-25,25)
 			inst=instance_create_depth(player.x,player.y,0,ammotype)
-			inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)
+			inst.direction=diry
 			inst.speed=15
 			inst.damage*=3
 			var new_x = inst.x + lengthdir_x(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=diry
 			inst.image_angle=inst.direction
 			inst.damage*=player.combo
 			player.i[1]=reload
@@ -378,9 +365,8 @@ gun[9]={
 			repeat(30)
 			{
 				inst=instance_create_depth(player.x+irandom_range(-64,64),player.y+irandom_range(-64,64),0,ammotype)
-				inst.direction=point_direction(inst.x,inst.y,mouse_x,mouse_y)
-				inst.speed=15
 				inst.direction=diry
+				inst.speed=15
 				inst.image_angle=inst.direction
 				inst.damage*=player.combo
 			}
@@ -402,7 +388,7 @@ gun[10]={
 			var diry=point_direction(player.x,player.y,mouse_x,mouse_y)+random_range(-25,25)
 			repeat(30)
 			{
-				inst=instance_create_depth(player.x+irandom_range(-64,64),128,0,ammotype)
+				inst=instance_create_depth(player.x+irandom_range(-64,64),256,0,ammotype)
 				inst.direction=270
 				inst.speed=15
 				inst.direction=diry
@@ -431,18 +417,16 @@ gun[4]={
 			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 			inst.x=new_x
 			inst.y=new_y
-			inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)
 			inst.image_angle=inst.direction
 			repeat(2)
 			{
 				inst=instance_create_depth(player.x,player.y,0,ammotype)
-				inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)
+				inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)+random_range(-45,45)
 				inst.speed=15
 				var new_x = inst.x + lengthdir_x(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 				var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 				inst.x=new_x
 				inst.y=new_y
-				inst.direction=point_direction(new_x,new_y,mouse_x,mouse_y)+random_range(-45,45)
 				inst.image_angle=inst.direction
 			}
 			player.i[1]=reload
@@ -470,7 +454,6 @@ array_insert(gun,4,{
 				var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 				inst.x=new_x
 				inst.y=new_y
-				inst.direction=diry
 				inst.image_angle=inst.direction
 				inst.damage=1
 				inst.damage*=player.combo
@@ -506,7 +489,6 @@ array_insert(gun,1,{
 					var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite), inst.direction)
 					inst.x=new_x
 					inst.y=new_y
-					inst.direction=diry
 					inst.image_angle=inst.direction
 					inst.damage*=charge*2
 					inst.damage*=player.combo
