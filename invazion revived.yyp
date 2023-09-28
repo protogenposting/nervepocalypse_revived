@@ -226,6 +226,7 @@
     {"id":{"name":"zombie","path":"objects/zombie/zombie.yy",},},
     {"id":{"name":"bvbtitle","path":"sounds/bvbtitle/bvbtitle.yy",},},
     {"id":{"name":"Sprite20","path":"sprites/Sprite20/Sprite20.yy",},},
+    {"id":{"name":"Sprite154","path":"sprites/Sprite154/Sprite154.yy",},},
     {"id":{"name":"firefall","path":"objects/firefall/firefall.yy",},},
     {"id":{"name":"acheivment28","path":"sprites/acheivment28/acheivment28.yy",},},
     {"id":{"name":"Sprite42","path":"sprites/Sprite42/Sprite42.yy",},},

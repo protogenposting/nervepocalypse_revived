@@ -195,6 +195,7 @@
     {"name":"zombie","order":2,"path":"objects/zombie/zombie.yy",},
     {"name":"bvbtitle","order":14,"path":"sounds/bvbtitle/bvbtitle.yy",},
     {"name":"Sprite20","order":26,"path":"sprites/Sprite20/Sprite20.yy",},
+    {"name":"Sprite154","order":73,"path":"sprites/Sprite154/Sprite154.yy",},
     {"name":"firefall","order":39,"path":"objects/firefall/firefall.yy",},
     {"name":"acheivment28","order":27,"path":"sprites/acheivment28/acheivment28.yy",},
     {"name":"Sprite42","order":38,"path":"sprites/Sprite42/Sprite42.yy",},
