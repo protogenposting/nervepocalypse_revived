@@ -125,7 +125,7 @@
 			hsp=sign(phsp)*movespd*3
 			_input = {left: false,
 		        right: false,
-		        up: false,
+		        up: keyboard_check(vk_space)||keyboard_check(ord("W"))||gamepad_button_check(0,gp_face1),
 				glide: false,
 		        mb_x: m_axisx,
 		        mb_y: m_axisy,

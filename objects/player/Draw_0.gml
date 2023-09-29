@@ -1,7 +1,7 @@
  /// @description Insert description here
 // You can write your code in this editor
 image_xscale=-sign((mouse_x<x)-0.5)
-if(abs(hsp)>0.1)
+if(image_xscale==1&&hsp>0.1||image_xscale==-1&&hsp<-0.1)
 {
 	if(lvsp>0&&vsp==0)
 	{
@@ -27,6 +27,32 @@ if(abs(hsp)>0.1)
 		}
 	}
 }
+else if(image_xscale==-1&&hsp>0.1||image_xscale==1&&hsp<-0.1)
+{
+	if(lvsp>0&&vsp==0)
+	{
+		negfrot=false
+		frot=0
+		frot2=180
+	}
+	frot-=movespd*2
+	if(frot<=0)
+	{
+		frot=360
+	}
+	if(frot<180)
+	{
+		negfrot=true
+	}
+	if(negfrot)
+	{
+		frot2-=movespd*2
+		if(frot2<=0)
+		{
+			frot2=360
+		}
+	}
+}
 else
 {
 	negfrot=false
@@ -38,7 +64,7 @@ function draw_player(col){
 	var rottyoay=0
 	var lenny=8
 	var foff=0
-	if(vsp<0)
+	if(vsp<0||hangglider)
 	{
 		frot=-90
 		frot2=-90
@@ -49,12 +75,25 @@ function draw_player(col){
 	draw_sprite_ext(foot1,image_index,x-16+lengthdir_x(lenny,90-frot2*image_xscale),y+40+lengthdir_y(lenny,90-frot2*image_xscale)-offsety+foff,image_xscale*1.5,1.5,rottyoay,col,drawing)
 	draw_sprite_ext(foot1,image_index,x+16+lengthdir_x(lenny,270-frot*image_xscale),y+40+lengthdir_y(lenny,270-frot*image_xscale)-offsety+foff,image_xscale*1.5,1.5,rottyoay,col,drawing)
 	var ang=point_direction(x, y, mouse_x,mouse_y)
-	draw_sprite_ext(backhand1,image_index,x+lengthdir_x(32,ang+180),y+lengthdir_y(32,ang+180),1.5,-sign((mouse_x<x)-0.5)*1.5,ang,c_white,1)
+	if(hangglider)
+	{
+		draw_sprite_ext(backhand1,image_index,x,bbox_top,1.5,-sign((mouse_x<x)-0.5)*1.5,90,c_white,1)
+		draw_sprite_ext(glider,0,x,bbox_top,-image_xscale,image_yscale*sign(grav),0,col,drawing)
+	}
+	else if(!rolling)
+	{
+		draw_sprite_ext(backhand1,image_index,x+lengthdir_x(32,ang+180),y+lengthdir_y(32,ang+180),1.5,-sign((mouse_x<x)-0.5)*1.5,ang,c_white,1)
+	}
 	draw_sprite_ext(sprite_index,image_index,x,y-offsety,image_xscale*1.5,1.5,0,col,drawing)
 	var ang=point_direction(x+image_xscale*8, y-48-offsety, mouse_x,mouse_y)
 	draw_sprite_ext(head1,image_index,x+image_xscale*8,y-48-offsety,1.5,image_xscale*1.5,ang,col,drawing)
 	draw_sprite_ext(eyes,menuthing.eye,x-8*-image_xscale+lengthdir_x(10,ang),y-40+lengthdir_y(8,ang)-offsety,1.5,image_xscale*1.5,ang,col,drawing)
 	draw_sprite_ext(mouths,menuthing.mouth,x-8*-image_xscale+lengthdir_x(10,ang),y-40+lengthdir_y(8,ang)-offsety,1.5,image_xscale*1.5,ang,col,drawing)
+	if(rolling)
+	{
+		draw_sprite_ext(backhand1,image_index,x-32,bbox_top,1.5,-sign((mouse_x<x)-0.5)*1.5,90,c_white,drawing)
+		draw_sprite_ext(fronthand1,image_index,x+32,bbox_top,1.5,-sign((mouse_x<x)-0.5)*1.5,90,c_white,drawing)
+	}
 }
 uial-=0.001
 draw_sprite_ext(buttons,1,bbox_right+64,bbox_top-64,1,1,0,c_white,uial)
@@ -83,7 +122,6 @@ if(!rolling)
 	{
 		rottyoa-=(rottyoa-((-image_xscale*65)))/10
 		draw_player(col)
-		draw_sprite_ext(glider,0,x,bbox_top+32,-image_xscale,image_yscale*sign(grav),0,col,drawing)
 	}
 	else
 	{
@@ -219,7 +257,7 @@ if(!rolling&&!shopping)
 					player.i[1]=2
 				}
 			}
-			draw_sprite_ext(knifeatt,image_index_real,x+lengthdir_x(kb,ang+180),y+lengthdir_y(kb,ang+180),1,-sign((mouse_x<x)-0.5),ang,c_white,1)
+			draw_sprite_ext(knifeatt,image_index_real,x+lengthdir_x(-32,ang+180),y+lengthdir_y(-32,ang+180),1,-sign((mouse_x<x)-0.5),ang,c_white,1)
 			if(image_index_real>sprite_get_number(knifeatt))
 			{
 				image_index_real=0
@@ -229,7 +267,7 @@ if(!rolling&&!shopping)
 		else
 		{
 			var ang=point_direction(x, y, mouse_x,mouse_y)
-			draw_sprite_ext(knifeidle,image_index_real,x+lengthdir_x(kb,ang+180),y+lengthdir_y(kb,ang+180),1,-sign((mouse_x<x)-0.5),ang,c_white,1)
+			draw_sprite_ext(knifeidle,image_index_real,x+lengthdir_x(-32,ang+180),y+lengthdir_y(-32,ang+180),1,-sign((mouse_x<x)-0.5),ang,c_white,1)
 		}
 	}
 }
