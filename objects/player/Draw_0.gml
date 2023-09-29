@@ -84,11 +84,28 @@ function draw_player(col){
 	{
 		draw_sprite_ext(backhand1,image_index,x+lengthdir_x(32,ang+180),y+lengthdir_y(32,ang+180),1.5,-sign((mouse_x<x)-0.5)*1.5,ang,c_white,1)
 	}
-	draw_sprite_ext(sprite_index,image_index,x,y-offsety,image_xscale*1.5,1.5,0,col,drawing)
 	var ang=point_direction(x+image_xscale*8,y-18-offsety, mouse_x,mouse_y)
-	draw_sprite_ext(head1,image_index,x+image_xscale*8,y-18-offsety,1.5,image_xscale*1.5,ang,col,drawing)
-	draw_sprite_ext(mouths,menuthing.eye,x-8*-image_xscale,y-18-offsety,1.5,image_xscale*1.5,ang,col,drawing)
-	draw_sprite_ext(eyes,menuthing.mouth,x-8*-image_xscale,y-18-offsety,1.5,image_xscale*1.5,ang,col,drawing)
+	var tang=0
+	if(ang>90&&ang<140)
+	{
+		tang=-15
+	}
+	if(ang>220&&ang<270)
+	{
+		tang=15
+	}
+	if(ang<90&&ang>40)
+	{
+		tang=15
+	}
+	if(ang>270&&ang<360-40)
+	{
+		tang=-15
+	}
+	draw_sprite_ext(sprite_index,image_index,x,y-offsety,image_xscale*1.5,1.5,tang,col,drawing)
+	draw_sprite_ext(head1,image_index,x,y-13-offsety,1.5,image_xscale*1.5,ang,col,drawing)
+	draw_sprite_ext(mouths,menuthing.eye,x,y-13-offsety,1.5,image_xscale*1.5,ang,col,drawing)
+	draw_sprite_ext(eyes,menuthing.mouth,x,y-13-offsety,1.5,image_xscale*1.5,ang,col,drawing)
 	if(rolling)
 	{
 		draw_sprite_ext(backhand1,image_index,x-32,bbox_top,1.5,-sign((mouse_x<x)-0.5)*1.5,90,c_white,drawing)
