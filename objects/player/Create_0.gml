@@ -357,7 +357,7 @@ gun[9]={
 	owned: false,
 	sprite: gun10,
 	reload: 7,
-	desc: "the legend, 7 FOR, summons bullets in a circle around you",
+	desc: "The mainframe, 7 FOR, summons bullets in a circle around you",
 	func: function(ammotype){
 		if(player.i[1]<=0)
 		{
@@ -377,23 +377,23 @@ gun[9]={
 	}
 }
 gun[10]={
-	cost: 9000,
+	cost: 10000,
 	owned: false,
 	sprite: gun11,
-	reload: 3,
-	desc: "the mainframe, 3 FOR, spawns bullets from the sky",
+	reload: 5,
+	desc: "The legend, 5 FOR, rains bullets from the sky",
 	func: function(ammotype){
 		if(player.i[1]<=0)
 		{
 			var diry=point_direction(player.x,player.y,mouse_x,mouse_y)+random_range(-25,25)
-			repeat(30)
+			repeat(3)
 			{
 				inst=instance_create_depth(player.x+irandom_range(-64,64),256,0,ammotype)
-				inst.direction=270
+				inst.direction=270+player.image_xscale*15
 				inst.speed=15
-				inst.direction=diry
 				inst.image_angle=inst.direction
 				inst.damage*=player.combo
+				inst.damage*=2
 			}
 			player.i[1]=reload
 			player.kb=7

@@ -2,9 +2,9 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "ungaymode",
-  "bbox_bottom": 767,
+  "bbox_bottom": 943,
   "bbox_left": 0,
-  "bbox_right": 1364,
+  "bbox_right": 1703,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"0e7946a5-08ee-4d8d-b794-54ba5ddb6c57",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"09bafeb1-a186-4286-ae09-6f9e16b0fa73",},
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 768,
+  "height": 944,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"2c7fc717-b891-4165-9198-a7c0c28ee295","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"a6145aed-31a3-4757-b155-de417a73a71e","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 9,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"0e7946a5-08ee-4d8d-b794-54ba5ddb6c57","path":"sprites/ungaymode/ungaymode.yy",},},},"Disabled":false,"id":"8dc4742b-6bfc-49df-be4c-8e3444eecd27","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"09bafeb1-a186-4286-ae09-6f9e16b0fa73","path":"sprites/ungaymode/ungaymode.yy",},},},"Disabled":false,"id":"611f4831-cfb4-4a57-9729-528854afaba7","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 1365,
+  "width": 1704,
 }

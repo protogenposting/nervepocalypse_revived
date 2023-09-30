@@ -2,9 +2,9 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "gaymode",
-  "bbox_bottom": 767,
+  "bbox_bottom": 943,
   "bbox_left": 0,
-  "bbox_right": 1364,
+  "bbox_right": 1703,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"258806ba-e125-442d-bb96-7c6eb20ce004",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"e582445d-90b1-4d91-9cc8-cd0c1edc1387",},
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 768,
+  "height": 944,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"36ca07de-b3ef-49a1-838f-e43f3d6050db","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"978afd2b-72b2-47fd-9e53-e33214a76d8a","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 9,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"258806ba-e125-442d-bb96-7c6eb20ce004","path":"sprites/gaymode/gaymode.yy",},},},"Disabled":false,"id":"3869c17e-8d4b-45b4-a765-bf71fd9dce59","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"e582445d-90b1-4d91-9cc8-cd0c1edc1387","path":"sprites/gaymode/gaymode.yy",},},},"Disabled":false,"id":"807b600e-f2cd-4e5d-a596-c87d89bd8364","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 1365,
+  "width": 1704,
 }
