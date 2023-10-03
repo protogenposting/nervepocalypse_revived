@@ -3,6 +3,6 @@
 if(alarm[0]>0&&instance_exists(zombie))
 {
 	speed*=0.9
-	direction-=(direction-point_direction(x,y,zombie.x,zombie.y))/30
+	direction-=(direction-point_direction(x,y,mouse_x,mouse_y))/30
 }
 image_angle=direction+360

@@ -700,7 +700,7 @@ acheivment[26]={
 skinacheivment[0]={
 	unlocked: true,
 	namey:"default guy",
-	desc:"do nothing (unlocks defualt skin)",
+	desc:"do nothing",
 	sprite: acheivment22,
 	func: function(){
 		var isdone=false
@@ -712,7 +712,7 @@ skinacheivment[1]={
 	unlocked: false,
 	namey:"Massacre",
 	sprite: acheivment29,
-	desc:"Kill 1000 zombies (unlocks Hitman)",
+	desc:"Kill 1000 zombies",
 	func: function(){
 		var isdone=false
 		isdone=menuthing.kills>=250
@@ -723,7 +723,7 @@ skinacheivment[2]={
 	unlocked: false,
 	namey:"Shopping Spree",
 	sprite: acheivment23,
-	desc:"Buy 10 things from the shop (unlocks Shop guy)",
+	desc:"Buy 10 things from the shop",
 	func: function(){
 		var isdone=false
 		isdone=menuthing.thingsbought>=10
@@ -735,7 +735,7 @@ skinacheivment[3]={
 	namey:"bob's apprentice",
 	hidden:true,
 	sprite: acheivment30,
-	desc:"get 300 score in bob vs bots mode (unlocks Bob)",
+	desc:"get 300 score in bob vs bots mode",
 	func: function(){
 		var isdone=false
 		isdone=room==secret&&instance_exists(bobplayer)&&bobplayer.scorey>=300
@@ -747,7 +747,7 @@ skinacheivment[4]={
 	hidden:true,
 	namey:"botted speedrun",
 	sprite: acheivment24,
-	desc:"get 500 score in bob vs bots mode (unlocks Bot)",
+	desc:"get 500 score in bob vs bots mode",
 	func: function(){
 		var isdone=false
 		isdone=room==secret&&instance_exists(bobplayer)&&bobplayer.scorey>=500
@@ -758,7 +758,7 @@ skinacheivment[5]={
 	unlocked: false,
 	sprite: acheivment25,
 	namey:"Flabbergastingly Severe Skill Issue",
-	desc:"Die with a score of 0. Wow... you suck... (unlocks BeatBoppin Guy) (currently only works correctly with proot songs)",
+	desc:"Die with a score of 0. Wow... you suck...",
 	func: function(){
 		var isdone=false
 		isdone=instance_exists(player)&&player.hp<=0&&player.scorey<=0
@@ -769,7 +769,7 @@ skinacheivment[6]={
 	unlocked: false,
 	sprite: acheivment32,
 	namey:"I AM THE BITCHES",
-	desc:"Beat the game one 0 bitches mode (unlocks invazion guy's bitch form. DONT MAKE NSFW ART OF HER WE WILL KILL YOU)",
+	desc:"Beat the game one 0 bitches mode",
 	func: function(){
 		var isdone=false
 		isdone=menuthing.finalbossdefeated&&player.ogdifficulty==5
@@ -781,7 +781,7 @@ skinacheivment[7]={
 	hidden: true,
 	sprite: acheivment33,
 	namey:"Floral Combat!",
-	desc:"Activate the spore event (unlocks baseball cap)",
+	desc:"Activate the spore event",
 	func: function(){
 		var isdone=false
 		return sign(isdone+unlocked)
@@ -790,7 +790,7 @@ skinacheivment[7]={
 skinacheivment[8]={
 	unlocked: false,
 	namey:"j7unes's tunes",
-	desc:"beat the game the way j7unes intended! (unlocks the j7unes skin)",
+	desc:"beat the game the way j7unes intended!",
 	sprite: acheivment35,
 	func: function(){
 		var isdone=false

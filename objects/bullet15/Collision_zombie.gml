@@ -2,10 +2,10 @@
 // You can write your code in this editor
 if(instance_exists(zombie))
 {
-other.hp-=0.1*damage
-inst=instance_furthest(x,y,zombie)
-direction=point_direction(x,y,inst.x,inst.y)
-speed+=1
+	other.hp-=damage
+	inst=instance_furthest(x,y,zombie)
+	direction=point_direction(x,y,inst.x,inst.y)
+	speed+=1
 }
 else
 {
