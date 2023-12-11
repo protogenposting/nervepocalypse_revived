@@ -153,18 +153,18 @@ gun[3]={
 	func: function(ammotype){
 		if(player.i[1]<=0)
 		{
-				inst=instance_create_depth(player.x,player.y,0,ammotype)
-				inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)
-				inst.speed=15
-				inst.damage*=10
-				var new_x = inst.x + lengthdir_x(sprite_get_width(sprite)-sprite_get_xoffset(sprite)+64, inst.direction)
-				var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite)+64, inst.direction)
-				inst.x=new_x
-				inst.y=new_y
-				inst.image_angle=inst.direction
-				inst.damage*=player.combo
-				player.i[1]=reload
-				player.kb=7
+			inst=instance_create_depth(player.x,player.y,0,ammotype)
+			inst.direction=point_direction(player.x,player.y,mouse_x,mouse_y)
+			inst.speed=15
+			inst.damage*=10
+			var new_x = inst.x + lengthdir_x(sprite_get_width(sprite)-sprite_get_xoffset(sprite)+64, inst.direction)
+			var new_y = inst.y + lengthdir_y(sprite_get_width(sprite)-sprite_get_xoffset(sprite)+64, inst.direction)
+			inst.x=new_x
+			inst.y=new_y
+			inst.image_angle=inst.direction
+			inst.damage*=player.combo
+			player.i[1]=reload
+			player.kb=7
 			audio_play_sound(riflefire,1000,false)
 		}
 	}
