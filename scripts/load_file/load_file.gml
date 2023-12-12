@@ -7,7 +7,6 @@ function load_file(fname){
 		var _buffer = buffer_load(fname)
 		var _string = buffer_read(_buffer,buffer_string)
 		buffer_delete(_buffer)
-		
 		var _loadData = json_parse(_string)
 		show_debug_message("loaded file: "+string(_loadData))
 		return _loadData;
