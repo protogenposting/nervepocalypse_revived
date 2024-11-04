@@ -215,6 +215,7 @@
     {"name":"scrolltoswap","order":27,"path":"sprites/scrolltoswap/scrolltoswap.yy",},
     {"name":"shopbg","order":21,"path":"sprites/shopbg/shopbg.yy",},
     {"name":"shopguy","order":1,"path":"sprites/shopguy/shopguy.yy",},
+    {"name":"spr_zombie_fire_boss","order":73,"path":"sprites/spr_zombie_fire_boss/spr_zombie_fire_boss.yy",},
     {"name":"Sprite1","order":14,"path":"sprites/Sprite1/Sprite1.yy",},
     {"name":"Sprite118","order":65,"path":"sprites/Sprite118/Sprite118.yy",},
     {"name":"Sprite12","order":21,"path":"sprites/Sprite12/Sprite12.yy",},

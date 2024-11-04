@@ -43,8 +43,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite141",
-    "path":"sprites/Sprite141/Sprite141.yy",
+    "name":"spr_zombie_fire_boss",
+    "path":"sprites/spr_zombie_fire_boss/spr_zombie_fire_boss.yy",
   },
   "spriteMaskId":null,
   "visible":true,
